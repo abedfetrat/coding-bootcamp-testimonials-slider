@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+body::after {
+  content: url(./images/pattern-curve.svg);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr min(1110px, calc(100% - 64px)) 1fr;
+  place-items: center;
+  height: 100vh;
+}
+
+.container > * {
+  grid-column: 2;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1;
+  align-items: center;
+  width: 100%;
+}
+
+.photo-and-controls-wrapper {
+  position: relative;
+  z-index: 1;
+  width: min-content;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.photo-and-controls-wrapper::after {
+  content: url(./images/pattern-bg.svg);
+  position: absolute;
+  top: -63px;
+  right: -92px;
+  z-index: -1;
+  display: block;
+}
+
+.photo {
+  display: block;
+  width: 550px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  box-shadow: 0px 40px 50px -30px rgba(36, 36, 113, 0.495001);
+}
+
+.controls {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(50%);
+  display: flex;
+  width: 112px;
+  height: 56px;
+  background-color: hsl(255, 100%, 100%);
+  border-radius: 50px;
+  box-shadow: 0px 15px 20px -10px rgba(36, 36, 113, 0.0991313);
+  overflow: hidden;
+}
+
+.btn-previous,
+.btn-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-previous::before {
+  content: url(./images/icon-prev.svg);
+  display: inline-block;
+}
+
+.btn-next::before {
+  content: url(./images/icon-next.svg);
+  display: inline-block;
+}
+
+.text-content {
+  position: relative;
+  z-index: 2;
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.text-content::after {
+  content: url(./images/pattern-quotes.svg);
+  position: absolute;
+  top: -66px;
+  left: 96px;
+  z-index: -1;
+  display: block;
+}
+
+.quote {
+  max-width: 32ch;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: hsl(240, 38%, 20%);
+}
+
+.name,
+.designation {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.name {
+  margin-top: 40px;
+  font-weight: 700;
+  color: hsl(240, 38%, 20%);
+}
+
+.designation {
+  margin-left: 5px;
+  color: hsl(240, 18%, 77%);
+}
