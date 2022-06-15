@@ -40,7 +40,7 @@ body {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1109px) {
+@media screen and (min-width: 768px) and (min-height: 530px) and (max-width: 1109px) {
   .container {
     --padding: 32px;
     padding-top: calc(var(--padding) * 2);
@@ -134,7 +134,7 @@ body {
   .photo {
     display: block;
     width: 100%;
-    max-width: 350px;
+    max-width: 255px;
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
@@ -145,6 +145,12 @@ body {
     bottom: clamp(6px, 8vw, 40px);
     left: 50%;
     transform: translateX(-50%) translateY(50%);
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 530px) and (max-width: 1109px) {
+  .photo {
+    max-width: 350px;
   }
 }
 
@@ -268,5 +274,15 @@ body {
   }
   .designation {
     margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 530px) and (max-width: 1109px) {
+  .quote {
+    font-size: 20px;
+  }
+  .name,
+  .designation {
+    font-size: 18px;
   }
 }
