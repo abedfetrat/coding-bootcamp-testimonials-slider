@@ -22,6 +22,15 @@ body {
   }
 }
 
+/* img elements without src have icon and black border around it. This hides it initially */
+img {
+  visibility: hidden;
+}
+
+img[src] {
+  visibility: visible;
+}
+
 .container {
   --padding: 64px;
   display: grid;
