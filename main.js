@@ -9,7 +9,7 @@ const btnNext = document.querySelector('#next');
 
 const testimonials = [
     {
-        photo: './images/image-tanya.jpg',
+        photo: './assets/images/image-tanya.jpg',
         quote: `I’ve been interested in coding for a while but never taken the
         jump, until now. I couldn’t recommend this course enough. I’m
         now in the job of my dreams and so excited about the future.`,
@@ -17,7 +17,7 @@ const testimonials = [
         designation: 'UX Engineer'
     },
     {
-        photo: './images/image-john.jpg',
+        photo: './assets/images/image-john.jpg',
         quote: `If you want to lay the best foundation possible I’d recommend taking this course. 
         The depth the instructors go into is incredible. I now feel so confident about 
         starting up as a professional developer.`,
@@ -108,7 +108,7 @@ function startTransition(direction) {
 let audio = new Audio();
 function playClickSound() {
     audio.pause();
-    audio = new Audio('./click.mp3');
+    audio = new Audio('./assets/audio/click.mp3');
     audio.volume = 0.2;
     audio.play();
 }
