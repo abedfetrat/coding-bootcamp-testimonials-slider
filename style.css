@@ -287,21 +287,57 @@ body {
   }
 }
 
-/* Slide transition */
+/* Animation keyframes */
 
-@keyframes fadeIn {
-  0% {
+@keyframes opacity {
+  from {
     opacity: 0;
   }
-  100% {
+  to {
     opacity: 1;
   }
 }
 
-.transition-slide .photo {
-  animation: fadeIn 800ms ease;
+@keyframes slideRight {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-.transition-slide .text-content {
-  animation: fadeIn 800ms ease;
+@keyframes slideLeft {
+  from {
+    transform: translateX(10%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Initial animation */
+.initial-animation {
+  animation: opacity 2800ms ease;
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+}
+
+.initial-animation .photo {
+  animation: slideLeft 2000ms ease;
+}
+
+.initial-animation .text-content {
+  animation: slideRight 2000ms ease;
+}
+
+/* Slide transition */
+.transition-slide-right .photo,
+.transition-slide-right .text-content {
+  animation: slideRight 900ms ease, opacity 900ms ease;
+}
+
+.transition-slide-left .photo,
+.transition-slide-left .text-content {
+  animation: slideLeft 900ms ease, opacity 900ms ease;
 }

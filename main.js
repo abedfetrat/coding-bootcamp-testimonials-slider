@@ -26,6 +26,9 @@ const testimonials = [
     }
 ];
 
+const PREVIOUS = -1;
+const NEXT = 1;
+
 let currSlideIndex = 0;
 
 populateSlide();
@@ -36,7 +39,7 @@ btnPrevious.addEventListener('click', () => {
     } else {
         currSlideIndex--;
     }
-    populateSlide();
+    populateSlide(PREVIOUS);
 });
 
 btnNext.addEventListener('click', () => {
@@ -46,10 +49,10 @@ btnNext.addEventListener('click', () => {
     } else {
         currSlideIndex++;
     }
-    populateSlide();
+    populateSlide(NEXT);
 });
 
-function populateSlide() {
+function populateSlide(direction) {
     const testimonial = testimonials[currSlideIndex];
 
     if (!testimonial) {
@@ -61,14 +64,39 @@ function populateSlide() {
     name.innerHTML = testimonial.name;
     designation.innerHTML = testimonial.designation;
 
-    startTransition();
+    const firstLoad = !direction;
+    if (firstLoad) {
+        playInitialAnimation();
+
+    } else {
+        startTransition(direction);
+    }
 }
 
-function startTransition() {
-    slider.classList.remove('transition-slide');
+function playInitialAnimation() {
+    slider.classList.add('initial-animation');
+}
 
-    // cause reflow so that the animation restarts
-    void (slider.offsetHeight);
+function startTransition(direction) {
+    // First make sure to remove the inital animation class
+    slider.classList.remove('initial-animation');
 
-    slider.classList.add('transition-slide');
+    if (direction === PREVIOUS) {
+        slider.classList.remove('transition-slide-left');
+        slider.classList.remove('transition-slide-right');
+        reflow();
+        slider.classList.add('transition-slide-left');
+    }
+
+    if (direction === NEXT) {
+        slider.classList.remove('transition-slide-left');
+        slider.classList.remove('transition-slide-right');
+        reflow();
+        slider.classList.add('transition-slide-right');
+    }
+
+    // Causes reflow so that the animation restarts
+    function reflow() {
+        void (slider.offsetHeight);
+    }
 }
