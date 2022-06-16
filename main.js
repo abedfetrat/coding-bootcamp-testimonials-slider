@@ -40,6 +40,8 @@ btnPrevious.addEventListener('click', () => {
         currSlideIndex--;
     }
     populateSlide(PREVIOUS);
+
+    playClickSound();
 });
 
 btnNext.addEventListener('click', () => {
@@ -50,6 +52,8 @@ btnNext.addEventListener('click', () => {
         currSlideIndex++;
     }
     populateSlide(NEXT);
+
+    playClickSound();
 });
 
 function populateSlide(direction) {
@@ -99,4 +103,12 @@ function startTransition(direction) {
     function reflow() {
         void (slider.offsetHeight);
     }
+}
+
+let audio = new Audio();
+function playClickSound() {
+    audio.pause();
+    audio = new Audio('./click.mp3');
+    audio.volume = 0.2;
+    audio.play();
 }
