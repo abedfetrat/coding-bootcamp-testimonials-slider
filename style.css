@@ -286,3 +286,22 @@ body {
     font-size: 18px;
   }
 }
+
+/* Slide transition */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.transition-slide .photo {
+  animation: fadeIn 800ms ease;
+}
+
+.transition-slide .text-content {
+  animation: fadeIn 800ms ease;
+}

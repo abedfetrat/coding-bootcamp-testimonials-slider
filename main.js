@@ -1,3 +1,4 @@
+const slider = document.querySelector('.slider');
 const photo = document.querySelector('.photo');
 const quote = document.querySelector('.quote');
 const name = document.querySelector('.name');
@@ -50,11 +51,24 @@ btnNext.addEventListener('click', () => {
 
 function populateSlide() {
     const testimonial = testimonials[currSlideIndex];
+
     if (!testimonial) {
         return;
     }
+
     photo.setAttribute('src', testimonial.photo);
     quote.innerHTML = `“ ${testimonial.quote} ”`;
     name.innerHTML = testimonial.name;
     designation.innerHTML = testimonial.designation;
+
+    startTransition();
+}
+
+function startTransition() {
+    slider.classList.remove('transition-slide');
+
+    // cause reflow so that the animation restarts
+    void (slider.offsetHeight);
+
+    slider.classList.add('transition-slide');
 }
