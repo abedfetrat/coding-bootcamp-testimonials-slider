@@ -325,19 +325,41 @@ img[src] {
   }
 }
 
+@keyframes slideGrowRight {
+  from {
+    transform: translateX(-100vw) scale(0.5);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideGrowLeft {
+  from {
+    transform: translateX(100vw) scale(0.5);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
 /* Initial animation */
 .initial-animation {
-  animation: opacity 2800ms ease;
   animation-delay: 200ms;
   animation-fill-mode: both;
 }
 
+.initial-animation .photo-and-controls-wrapper::after {
+  animation: opacity 900ms ease-in;
+  animation-fill-mode: both;
+}
+
 .initial-animation .photo {
-  animation: slideLeft 2000ms ease;
+  animation: slideGrowLeft 900ms ease, opacity 1000ms ease;
 }
 
 .initial-animation .text-content {
-  animation: slideRight 2000ms ease;
+  animation: slideGrowRight 900ms ease, opacity 1000ms ease;
 }
 
 /* Slide transition */
